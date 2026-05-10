@@ -1,0 +1,28 @@
+# TCP/AI Roadmap
+
+TCP/AI is currently in **Phase 1: Repo Hardening and Documentation**. 
+The goal is to evolve from a draft specification into a fully benchmarked protocol with robust community tooling.
+
+## Phase 1: Repo Hardening (Current)
+- Establish repository structure and open-source hygiene.
+- Finalize issue templates, pull request processes, and governance.
+- Clean up documentation and outline future benchmark schemas.
+
+## Phase 2: Empirical Benchmarking
+- Build out the initial prompt corpus (JSONL).
+- Gather community benchmark submissions across different models (GPT-4, Claude 3, Llama 3, etc.).
+- Validate tokenizer counts and compression ratios.
+- Identify edge cases, failure modes, and areas needing specification updates.
+
+## Phase 3: Tooling Development
+- Build a tokenizer counter for accurate metrics.
+- Develop a prompt-pair validator for CI pipelines.
+- Create a local benchmark runner for automated testing.
+- Begin work on a TCP/AI linter for IDEs and text editors.
+
+## Phase 4: Auto-Compression
+- Research algorithmic approaches to auto-compress natural language into TCP/AI shorthand.
+- Provide a CLI tool or extension for automatic conversion.
+
+## Phase 5: Native Model Integration
+- Long-term goal: Encourage native recognition and optimization for TCP/AI in major LLM providers to further reduce token costs and latency without sacrificing output quality.
