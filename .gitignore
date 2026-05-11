@@ -11,8 +11,6 @@ Thumbs.db
 node_modules/
 npm-debug.log
 yarn-error.log
-package-lock.json
-yarn.lock
 
 # Python
 __pycache__/
@@ -30,3 +28,7 @@ venv.bak/
 .valkyrie/
 *.log
 scratch/
+.tcpai_ag_seeds/
+.project_tracking/
+
+

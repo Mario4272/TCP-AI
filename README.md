@@ -8,7 +8,7 @@ TCP/AI is intended to reduce unnecessary user-input tokens while preserving mean
 
 ## Why this exists
 
-As context windows grow and API requests scale, the token overhead of polite, conversational scaffolding adds up in both cost and latency. TCP/AI provides a standardized, human-readable shorthand to bypass this fluff, allowing power users to communicate their exact intent to models in a fraction of the tokens.
+As context windows grow and API requests scale, the token overhead of polite, conversational scaffolding adds up in both cost and latency. TCP/AI provides a standardized, human-readable shorthand to remove low-value scaffolding, allowing power users to communicate their exact intent to models in a fraction of the tokens.
 
 ## What TCP/AI is not
 
@@ -44,11 +44,11 @@ TCP/AI preserves whole content words and removes low-value conversational scaffo
 
 ## Example
 
-| Natural | TCP/AI |
-|---|---|
+| Natural                                                                                                          | TCP/AI                                             |
+| ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
 | "Could you please write me a Python function that takes a list and returns the unique values, preserving order?" | `=Python fn: list → unique values, preserve order` |
-| "I need you to be really direct with me — is my business plan actually viable or am I fooling myself?" | `=.blunt business plan viable, or fooling myself?` |
-| "Can you give me a quick brainstorm of names for a coffee shop with a vintage aesthetic?" | `~.opt coffee shop names, vintage aesthetic` |
+| "I need you to be really direct with me — is my business plan actually viable or am I fooling myself?"           | `=.blunt business plan viable, or fooling myself?` |
+| "Can you give me a quick brainstorm of names for a coffee shop with a vintage aesthetic?"                        | `~.opt coffee shop names, vintage aesthetic`       |
 
 ## Repository layout
 
