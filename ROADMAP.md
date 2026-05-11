@@ -10,7 +10,7 @@ The goal is to evolve from a draft specification into a fully benchmarked protoc
 
 ## Phase 2: Empirical Benchmarking
 - Build out the initial prompt corpus (JSONL).
-- Gather community benchmark submissions across different models (GPT-4, Claude 3, Llama 3, etc.).
+- Gather community benchmark submissions across different models (frontier, open-weight, and local models).
 - Validate tokenizer counts and compression ratios.
 - Identify edge cases, failure modes, and areas needing specification updates.
 
