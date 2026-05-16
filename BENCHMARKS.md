@@ -199,9 +199,12 @@ Future benchmark data and tooling outputs live under the `benchmarks/results/` a
 ```text
 benchmarks/
 ├── results/
-│   └── seed_v0.1_token_counts.sample.csv  # Tokenizer count baseline
+│   ├── seed_v0.1_token_counts.sample.csv        # Historical v0.1 baseline
+│   ├── seed_v0.2_token_counts.sample.csv        # Current v0.2 baseline
+│   └── seed_v0.2_token_counts.multi.sample.csv  # Current multi-tokenizer baseline
 └── validation/
-    └── seed_v0.1_validation.sample.txt    # Corpus validation report
+    ├── seed_v0.1_validation.sample.txt          # Historical v0.1 report
+    └── seed_v0.2_validation.sample.txt          # Current v0.2 report
 ```
 
 ## Reporting template

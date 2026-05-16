@@ -24,16 +24,23 @@ jobs:
       - name: Validate spec registry
         run: python tools/spec-check/validate_spec_registry.py --spec spec/tcpai-v0.3.json
 
-      - name: Run corpus validator
+      - name: Run corpus validator (v0.2)
+        run: python tools/corpus-validator/validate_corpus.py --input corpus/seed/prompts_v0.2.jsonl
+
+      - name: Run corpus validator (v0.1)
         run: python tools/corpus-validator/validate_corpus.py --input corpus/seed/prompts_v0.1.jsonl
 
-      - name: Run token-count smoke test
-        run: python tools/token-count/count_tokens.py --input corpus/seed/prompts_v0.1.jsonl --output /tmp/smoke_test_counts.csv
-
-      - name: Verify token-count reproducibility
-        run: diff -u --strip-trailing-cr benchmarks/results/seed_v0.1_token_counts.sample.csv /tmp/smoke_test_counts.csv
-
-      - name: Verify multi-tokenizer reproducibility
+      - name: Verify token-count reproducibility (v0.2)
         run: |
-          python tools/token-count/count_tokens.py --input corpus/seed/prompts_v0.1.jsonl --output /tmp/multi_smoke_test.csv --tokenizer all
-          diff -u --strip-trailing-cr benchmarks/results/seed_v0.1_token_counts.multi.sample.csv /tmp/multi_smoke_test.csv
+          python tools/token-count/count_tokens.py --input corpus/seed/prompts_v0.2.jsonl --output /tmp/smoke_test_counts.csv
+          diff -u --strip-trailing-cr benchmarks/results/seed_v0.2_token_counts.sample.csv /tmp/smoke_test_counts.csv
+
+      - name: Verify multi-tokenizer reproducibility (v0.2)
+        run: |
+          python tools/token-count/count_tokens.py --input corpus/seed/prompts_v0.2.jsonl --output /tmp/multi_smoke_test.csv --tokenizer all
+          diff -u --strip-trailing-cr benchmarks/results/seed_v0.2_token_counts.multi.sample.csv /tmp/multi_smoke_test.csv
+
+      - name: Verify token-count reproducibility (v0.1)
+        run: |
+          python tools/token-count/count_tokens.py --input corpus/seed/prompts_v0.1.jsonl --output /tmp/smoke_test_v01.csv
+          diff -u --strip-trailing-cr benchmarks/results/seed_v0.1_token_counts.sample.csv /tmp/smoke_test_v01.csv
