@@ -17,7 +17,8 @@ The goal is to evolve from a draft specification into a fully benchmarked protoc
 ## Phase 3: Tooling Development (Current)
 - Build a tokenizer counter for accurate metrics.
 - Develop a prompt-pair validator for CI pipelines.
-- **Add automated CI validation and backlog tracking.**
+- **Automated CI, Backlog Tracking, and Spec Registry (Completed/Hardened).**
+- **Tokenizer Strategy and Corpus Expansion (Planning/Foundation).**
 - Create a local benchmark runner for automated testing.
 - Begin work on a TCP/AI linter for IDEs and text editors.
 
