@@ -34,9 +34,10 @@ Each record in the corpus must be a single JSON line with the following fields:
   - [TCP/AI Specification](SPEC.md)
 
 ## 5. Quality Expectations
-- **Intent Preservation**: The `tcp_prompt` must preserve 100% of the core intent of the `natural_prompt`.
+- **Semantic Fidelity**: The `tcp_prompt` must preserve the core intent, constraints, and requested response shape of the `natural_prompt`. See the [Semantic Fidelity Rubric](docs/SEMANTIC_FIDELITY_RUBRIC.md) for details.
 - **Honest Risk Assessment**: If compression introduces potential ambiguity, record it in `risk_notes`.
-- **Meaning Over Reduction**: Do not sacrifice clarity or safety just to achieve a higher compression ratio.
+- **Meaning Over Reduction**: Do not sacrifice clarity or safety just to achieve a higher compression ratio. Contributors should not optimize only for token reduction.
+- **Compression Rationale**: `compression_notes` should explain why the compression is safe and what trade-offs were made.
 
 ## 6. Validation Steps
 Before submitting a PR, you must run the following local checks:

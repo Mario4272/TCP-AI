@@ -1,4 +1,15 @@
-# TCP/AI Benchmarks
+# TCP/AI Benchmark Methodology
+
+This document describes how we measure the performance of the TCP/AI shorthand protocol.
+
+## Evaluation Layers
+
+The TCP/AI benchmark consists of two primary evaluation layers:
+
+1.  **Token Reduction (Quantitative)**: Measuring the raw token savings using various tokenizers (tiktoken, etc.). This is currently fully implemented.
+2.  **Semantic Fidelity (Qualitative)**: Measuring how well the compressed prompt preserves meaning, intent, and constraints. This is currently in the **Design & Scaffolding** phase.
+
+## Current Baseline (v0.2)
 
 TCP/AI's claims should be validated empirically. Heuristic token-reduction estimates are useful for early discussion, but benchmark data is the source of truth.
 
