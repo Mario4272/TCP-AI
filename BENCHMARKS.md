@@ -179,6 +179,10 @@ Expected distinction:
 ```text
 TCP/AI = manually writable, human-readable shorthand
 LLMLingua family = machine-generated compression, stronger for long prompts/RAG, less human-readable
+
+## Safe vs. Unsafe Claims
+
+Before interpreting or publishing benchmark results, please review the [Safe vs. Unsafe Claims](docs/releases/v0.2-benchmark-snapshot.md#5-safe-vs-unsafe-claims) section in our latest snapshot. We prioritize empirical honesty over marketing.
 ```
 
 ## Minimum viable benchmark run
@@ -198,6 +202,8 @@ Future benchmark data and tooling outputs live under the `benchmarks/results/` a
 
 ```text
 benchmarks/
+├── reports/
+│   └── seed_v0.2_benchmark_summary.md           # Current v0.2 summary report
 ├── results/
 │   ├── seed_v0.1_token_counts.sample.csv        # Historical v0.1 baseline
 │   ├── seed_v0.1_token_counts.multi.sample.csv  # Historical v0.1 multi-tokenizer baseline
@@ -206,6 +212,16 @@ benchmarks/
 └── validation/
     ├── seed_v0.1_validation.sample.txt          # Historical v0.1 report
     └── seed_v0.2_validation.sample.txt          # Current v0.2 report
+
+## Reporting Tool
+
+We use a custom tool to generate summary reports from raw CSV results:
+```bash
+python tools/benchmark-report/summarize_token_counts.py \
+  --input benchmarks/results/seed_v0.2_token_counts.multi.sample.csv \
+  --output benchmarks/reports/seed_v0.2_benchmark_summary.md
+```
+See the [Reporting Tool README](tools/benchmark-report/README.md) for more details.
 ```
 
 ## Reporting template
