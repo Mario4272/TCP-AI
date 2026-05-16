@@ -2,7 +2,8 @@
 
 ## 1. Dataset Information
 - **Corpus**: `corpus/seed/prompts_v0.2.jsonl`
-- **Records**: 100
+- **Unique Prompt Records**: 100
+- **Total Tokenizer Samples**: 200
 - **Categories**: 12
 
 ## 2. Overall Performance
@@ -24,21 +25,30 @@
 | `o200k_base` | 40.44% | 6.25% | 72.00% | 42.23% |
 
 ## 4. Performance by Category
-| Category | Records | Mean Reduction | Min | Max |
-|---|---|---|---|---|
-| `architecture` | 16 | 34.69% | 19.05% | 46.67% |
-| `brainstorming` | 16 | 47.33% | 26.67% | 62.50% |
-| `brief_explanation` | 16 | 53.37% | 30.00% | 76.00% |
-| `coding_request` | 18 | 47.59% | 30.77% | 66.67% |
-| `debugging_request` | 18 | 41.05% | 12.50% | 60.71% |
-| `decision_recommendation` | 16 | 46.65% | 26.67% | 61.11% |
-| `general_qna` | 16 | 44.29% | 6.25% | 70.00% |
-| `personal_important` | 16 | 38.55% | 26.67% | 70.00% |
-| `skeptical_review` | 16 | 35.64% | 12.50% | 61.90% |
-| `structured_data_wrapper` | 18 | 32.25% | 14.29% | 50.00% |
-| `technical_explanation` | 18 | 42.93% | 14.29% | 70.00% |
-| `writing_editing` | 16 | 25.40% | 7.14% | 46.67% |
+| Category | Samples | Mean Reduction | Min | Max | Total Saved |
+|---|---|---|---|---|---|
+| `architecture` | 16 | 34.69% | 19.05% | 46.67% | 91 |
+| `brainstorming` | 16 | 47.33% | 26.67% | 62.50% | 122 |
+| `brief_explanation` | 16 | 53.37% | 30.00% | 76.00% | 132 |
+| `coding_request` | 18 | 47.59% | 30.77% | 66.67% | 191 |
+| `debugging_request` | 18 | 41.05% | 12.50% | 60.71% | 165 |
+| `decision_recommendation` | 16 | 46.65% | 26.67% | 61.11% | 126 |
+| `general_qna` | 16 | 44.29% | 6.25% | 70.00% | 124 |
+| `personal_important` | 16 | 38.55% | 26.67% | 70.00% | 100 |
+| `skeptical_review` | 16 | 35.64% | 12.50% | 61.90% | 93 |
+| `structured_data_wrapper` | 18 | 32.25% | 14.29% | 50.00% | 86 |
+| `technical_explanation` | 18 | 42.93% | 14.29% | 70.00% | 134 |
+| `writing_editing` | 16 | 25.40% | 7.14% | 46.67% | 58 |
 
-## 5. Implementation Notes
+## 5. Benchmark Limitations
+- **Semantic Fidelity**: This benchmark measures token reduction only, not meaning preservation.
+- **Synthetic Data**: The corpus is 100% synthetic for privacy and safety.
+- **Limited Scope**: The 100-record seed represents a narrow subset of real-world conversational variety.
+
+## 6. Safe vs. Unsafe Claims
+- **Safe**: "TCP/AI v0.2 shows ~40% token reduction on this 100-record synthetic baseline."
+- **Unsafe**: "TCP/AI preserves meaning perfectly for all workloads."
+
+## 7. Implementation Notes
 - This report was generated automatically by `tools/benchmark-report/summarize_token_counts.py`.
 - All metrics are derived from token-count samples in `benchmarks/results/`.

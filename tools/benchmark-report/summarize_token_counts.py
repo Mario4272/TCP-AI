@@ -33,7 +33,8 @@ def format_markdown(summary, category_summaries, tokenizer_summaries, corpus_inf
     lines.append("")
     lines.append("## 1. Dataset Information")
     lines.append(f"- **Corpus**: `{corpus_info['path']}`")
-    lines.append(f"- **Records**: {corpus_info['record_count']}")
+    lines.append(f"- **Unique Prompt Records**: {corpus_info['record_count']}")
+    lines.append(f"- **Total Tokenizer Samples**: {summary['count']}")
     lines.append(f"- **Categories**: {len(category_summaries)}")
     lines.append("")
     
@@ -59,16 +60,28 @@ def format_markdown(summary, category_summaries, tokenizer_summaries, corpus_inf
     lines.append("")
     
     lines.append("## 4. Performance by Category")
-    lines.append("| Category | Records | Mean Reduction | Min | Max |")
-    lines.append("|---|---|---|---|---|")
+    lines.append("| Category | Samples | Mean Reduction | Min | Max | Total Saved |")
+    lines.append("|---|---|---|---|---|---|")
     for cat in sorted(category_summaries.keys()):
         s = category_summaries[cat]
-        lines.append(f"| `{cat}` | {s['count']} | {s['mean_reduction']:.2f}% | {s['min_reduction']:.2f}% | {s['max_reduction']:.2f}% |")
+        lines.append(f"| `{cat}` | {s['count']} | {s['mean_reduction']:.2f}% | {s['min_reduction']:.2f}% | {s['max_reduction']:.2f}% | {s['total_saved']} |")
+    lines.append("")
+
+    lines.append("## 5. Benchmark Limitations")
+    lines.append("- **Semantic Fidelity**: This benchmark measures token reduction only, not meaning preservation.")
+    lines.append("- **Synthetic Data**: The corpus is 100% synthetic for privacy and safety.")
+    lines.append("- **Limited Scope**: The 100-record seed represents a narrow subset of real-world conversational variety.")
+    lines.append("")
+
+    lines.append("## 6. Safe vs. Unsafe Claims")
+    lines.append("- **Safe**: \"TCP/AI v0.2 shows ~40% token reduction on this 100-record synthetic baseline.\"")
+    lines.append("- **Unsafe**: \"TCP/AI preserves meaning perfectly for all workloads.\"")
     lines.append("")
     
-    lines.append("## 5. Implementation Notes")
+    lines.append("## 7. Implementation Notes")
     lines.append("- This report was generated automatically by `tools/benchmark-report/summarize_token_counts.py`.")
     lines.append("- All metrics are derived from token-count samples in `benchmarks/results/`.")
+    lines.append("") # Final newline
     
     return "\n".join(lines)
 
