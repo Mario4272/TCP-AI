@@ -13,6 +13,7 @@ The goal is to evolve from a draft specification into a fully benchmarked protoc
 - Gather community benchmark submissions across different models (frontier, open-weight, and local models).
 - Validate tokenizer counts and compression ratios.
 - Identify edge cases, failure modes, and areas needing specification updates.
+- **Seed Corpus expanded to 100+ records (v0.2).**
 
 ## Phase 3: Tooling Development (Current)
 - Build a tokenizer counter for accurate metrics.

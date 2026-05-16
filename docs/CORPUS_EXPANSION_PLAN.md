@@ -33,7 +33,7 @@ Each record added to the corpus must adhere to the following:
 - **Distribution**: Category distribution remains balanced or justification is provided for skew.
 - **Hygiene**: No benchmark claims are made beyond the measured token reduction counts.
 
-## 5. Proposed Milestone Issues
-1. **Expand seed corpus to 100 prompt pairs**: Focus on pure data entry and validation.
-2. **Add corpus category distribution report**: Enhance validator to output a detailed balance report.
-3. **Create corpus contribution guide**: Document the synthetic data policy and validation steps for community contributors.
+## 5. Milestone Status
+1. **Expand seed corpus to 100 prompt pairs**: **Completed** (Phase 0012). Benchmark corpus v0.2 is live with 100 records.
+2. **Add corpus category distribution report**: **Completed** (Phase 0011).
+3. **Create corpus contribution guide**: **Completed** (Phase 0011).

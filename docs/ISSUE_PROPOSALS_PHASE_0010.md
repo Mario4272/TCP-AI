@@ -12,7 +12,7 @@ This document outlines proposed future issues derived from the research and desi
 - **Goal**: Implement an automated CI check to ensure `spec/tcpai-v0.3.json` remains structurally sound.
 
 ### 2. Expand seed corpus to 100 prompt pairs
-- **Status**: **Live** (Issue [#17](https://github.com/Mario4272/TCP-AI/issues/17))
+- **Status**: **Completed** (Phase 0012 / Issue [#17](https://github.com/Mario4272/TCP-AI/issues/17))
 - **Goal**: Scale the benchmark to improve statistical significance (v0.2 corpus).
 
 ### 3. Add corpus category distribution report

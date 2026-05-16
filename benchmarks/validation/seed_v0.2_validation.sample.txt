@@ -1,0 +1,33 @@
+=== TCP/AI Corpus Validation Report ===
+Total Records: 100
+Errors Found:  0
+Warnings:      0
+Final Status:  PASS
+
+-- Category Distribution --
+  architecture: 8 (8.00%)
+  brainstorming: 8 (8.00%)
+  brief_explanation: 8 (8.00%)
+  coding_request: 9 (9.00%)
+  debugging_request: 9 (9.00%)
+  decision_recommendation: 8 (8.00%)
+  general_qna: 8 (8.00%)
+  personal_important: 8 (8.00%)
+  skeptical_review: 8 (8.00%)
+  structured_data_wrapper: 9 (9.00%)
+  technical_explanation: 9 (9.00%)
+  writing_editing: 8 (8.00%)
+
+-- Marker Distribution --
+  .why: 21
+  .rec: 16
+  ~: 16
+  .ans: 14
+  .b: 12
+  .l: 9
+  =: 9
+  !: 8
+  .soft: 8
+  .opt: 7
+  ?: 5
+  .blunt: 2
