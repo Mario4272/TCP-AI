@@ -8,38 +8,21 @@ This document outlines proposed future issues derived from the research and desi
 ---
 
 ### 1. Add spec registry drift guard
-- **Goal**: Implement an automated CI check to ensure `spec/tcpai-v0.3.json` remains structurally sound and aligned with schema expectations.
-- **Proposed Labels**: `spec`, `tooling`, `ci`
-- **Acceptance Criteria**:
-  - Script `tools/spec-check/validate_spec_registry.py` created.
-  - Script validates JSON schema-like constraints (keys, types).
-  - Script added to GitHub Actions workflow.
+- **Status**: **Completed** (Phase 0011 / Issue [#16](https://github.com/Mario4272/TCP-AI/issues/16))
+- **Goal**: Implement an automated CI check to ensure `spec/tcpai-v0.3.json` remains structurally sound.
 
 ### 2. Expand seed corpus to 100 prompt pairs
+- **Status**: **Live** (Issue [#17](https://github.com/Mario4272/TCP-AI/issues/17))
 - **Goal**: Scale the benchmark to improve statistical significance (v0.2 corpus).
-- **Proposed Labels**: `corpus`, `benchmark`
-- **Acceptance Criteria**:
-  - The expanded v0.2 corpus contains 100+ valid records.
-  - All records pass the corpus validator.
-  - Token-count samples updated for the new records.
 
 ### 3. Add corpus category distribution report
+- **Status**: **Completed** (Phase 0011 / Issue [#18](https://github.com/Mario4272/TCP-AI/issues/18))
 - **Goal**: Improve transparency regarding benchmark balance.
-- **Proposed Labels**: `corpus`, `tooling`, `benchmark`
-- **Acceptance Criteria**:
-  - Validator or separate tool generates a summary report (text or JSON) of category counts and percentages.
 
 ### 4. Create corpus contribution guide
+- **Status**: **Completed** (Phase 0011 / Issue [#19](https://github.com/Mario4272/TCP-AI/issues/19))
 - **Goal**: Facilitate community contributions while maintaining quality.
-- **Proposed Labels**: `documentation`, `corpus`, `good-first-issue`
-- **Acceptance Criteria**:
-  - `CONTRIBUTING_CORPUS.md` created.
-  - Documents synthetic data policy, marker usage, and local validation steps.
 
 ### 5. Implement optional Hugging Face tokenizers support
+- **Status**: **Live** (Issue [#20](https://github.com/Mario4272/TCP-AI/issues/20))
 - **Goal**: First step toward non-tiktoken support (Issue #10).
-- **Proposed Labels**: `benchmark`, `tooling`
-- **Acceptance Criteria**:
-  - `count_tokens.py` supports `--tokenizer-hf` using a local `tokenizer.json`.
-  - Dependencies are optional (`requirements-hf.txt`).
-  - No automatic network downloads or large binary commits.

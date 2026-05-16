@@ -34,6 +34,6 @@ This document contains a seed/index of proposed initial issues to be added to th
 
 ### 6. Add multi-tokenizer support beyond tiktoken baseline
 - **Live Issue**: [#10](https://github.com/Mario4272/TCP-AI/issues/10)
-- **Status**: **Advanced** (Phase 0010)
+- **Status**: **Advanced** (Phase 0011)
 - **Description**: Expanded `count_tokens.py` to support multiple tiktoken encodings. Phase 0010 added comprehensive [Non-tiktoken Research](../docs/NON_TIKTOKEN_TOKENIZER_RESEARCH.md) and [Adapter Design](../docs/TOKENIZER_ADAPTER_DESIGN.md).
 - **Labels**: `benchmark`, `tooling`

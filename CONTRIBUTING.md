@@ -2,6 +2,11 @@
 
 TCP/AI is an open draft specification. Contributions are welcome, especially when they include concrete examples or benchmark data.
 
+### Technical Contributions
+- **Tooling**: Bug fixes or features for the validator, counter, or linter.
+- **Specification**: Proposals for new markers or protocol updates (see [SPEC.md](SPEC.md)).
+- **Corpus**: Adding new prompt pairs to the benchmark (see [CONTRIBUTING_CORPUS.md](CONTRIBUTING_CORPUS.md)).
+
 ## Useful contributions
 
 - Empirical data from running token-reduction benchmarks

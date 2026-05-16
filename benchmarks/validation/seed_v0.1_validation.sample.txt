@@ -5,29 +5,29 @@ Warnings:      0
 Final Status:  PASS
 
 -- Category Distribution --
-  general_qna: 3
-  brief_explanation: 3
-  technical_explanation: 3
-  coding_request: 3
-  debugging_request: 3
-  writing_editing: 3
-  brainstorming: 3
-  architecture: 3
-  decision_recommendation: 3
-  skeptical_review: 3
-  personal_important: 3
-  structured_data_wrapper: 3
+  architecture: 3 (8.33%)
+  brainstorming: 3 (8.33%)
+  brief_explanation: 3 (8.33%)
+  coding_request: 3 (8.33%)
+  debugging_request: 3 (8.33%)
+  decision_recommendation: 3 (8.33%)
+  general_qna: 3 (8.33%)
+  personal_important: 3 (8.33%)
+  skeptical_review: 3 (8.33%)
+  structured_data_wrapper: 3 (8.33%)
+  technical_explanation: 3 (8.33%)
+  writing_editing: 3 (8.33%)
 
 -- Marker Distribution --
-  .b: 5
   .ans: 5
-  ~: 5
-  .why: 5
+  .b: 5
   .rec: 5
-  .l: 3
-  =: 3
-  .soft: 3
+  .why: 5
+  ~: 5
   !: 3
-  ?: 2
+  .l: 3
+  .soft: 3
+  =: 3
   .blunt: 2
   .opt: 2
+  ?: 2
