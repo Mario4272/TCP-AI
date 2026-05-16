@@ -5,6 +5,7 @@ This directory contains executable tooling to support the TCP/AI specification.
 ## Available Tools
 
 - [**token-count**](token-count/): A lightweight offline utility to count and compare tokens between natural language and TCP/AI shorthand using `tiktoken`.
+- [**corpus-validator**](corpus-validator/): A dependency-free Python script to strictly validate the integrity and syntax of TCP/AI JSONL benchmark corpora.
 
 ## Planned Tools
 In the future, we plan to implement the following tools to support the ecosystem:

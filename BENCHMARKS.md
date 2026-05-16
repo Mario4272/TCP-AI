@@ -192,11 +192,14 @@ A credible first benchmark should include:
 
 ## Suggested result files
 
-Future benchmark data and tooling outputs live under the `benchmarks/results/` directory:
+Future benchmark data and tooling outputs live under the `benchmarks/results/` and `benchmarks/validation/` directories:
 
 ```text
-benchmarks/results/
-├── seed_v0.1_token_counts.sample.csv  # Tokenizer count baseline
+benchmarks/
+├── results/
+│   └── seed_v0.1_token_counts.sample.csv  # Tokenizer count baseline
+└── validation/
+    └── seed_v0.1_validation.sample.txt    # Corpus validation report
 ```
 
 ## Reporting template
