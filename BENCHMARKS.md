@@ -192,15 +192,11 @@ A credible first benchmark should include:
 
 ## Suggested result files
 
-Future benchmark data should live under a `benchmarks/` or `data/` directory once tooling exists:
+Future benchmark data and tooling outputs live under the `benchmarks/results/` directory:
 
 ```text
-benchmarks/
-├── corpus.jsonl
-├── token-counts.csv
-├── quality-ratings.csv
-├── marker-fidelity.csv
-└── structured-data-results.csv
+benchmarks/results/
+├── seed_v0.1_token_counts.sample.csv  # Tokenizer count baseline
 ```
 
 ## Reporting template
