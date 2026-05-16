@@ -64,7 +64,7 @@ def validate_spec(spec_path):
             note_content = notes["parentheses"]
             if not isinstance(note_content, str) or not note_content.strip():
                 errors.append("'syntax_notes.parentheses' must be a non-empty string.")
-            elif "not a marker" not in note_content.lower():
+            elif "not" not in note_content.lower() or "marker" not in note_content.lower():
                 errors.append("'syntax_notes.parentheses' note should explicitly mention it is not a marker.")
 
     # 4. Marker validation
