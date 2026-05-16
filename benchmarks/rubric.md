@@ -12,7 +12,7 @@ When comparing a model's response to a TCP/AI shorthand prompt against its respo
 - **Score 1 (Complete Failure)**: The model fails to understand the prompt, errors out, or asks for clarification on core concepts.
 
 ## 2. Marker Fidelity Rubric
-TCP/AI relies on specific shorthand markers (e.g., `!` for urgency, `?` for uncertainty, `()` for context). This rubric evaluates how well the model adheres to the intent of these markers.
+TCP/AI relies on specific shorthand markers (e.g., `!` for urgency, `?` for curiosity/open-endedness, `.b` for brief replies, `.why` for explanatory reasoning, and `.rec` for recommendations). This rubric evaluates how well the model adheres to the intent of these markers.
 
 - **Pass**: The model's response explicitly or implicitly acknowledges the marker's intent (e.g., providing a concise answer when prompted with brevity markers, or adopting a specific persona).
 - **Fail**: The model ignores the marker (e.g., providing a verbose answer despite brevity markers, or ignoring a requested output format).
