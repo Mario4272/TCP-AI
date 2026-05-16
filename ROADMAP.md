@@ -22,6 +22,7 @@ The goal is to evolve from a draft specification into a fully benchmarked protoc
 - **Governance Tooling and Corpus Contribution Guides (Completed).**
 - **Tokenizer Strategy and Corpus Expansion (Completed - v0.2).**
 - **Benchmark Reporting and v0.2 Snapshot (Phase 0013 Completed).**
+- **Semantic Fidelity Evaluation Layer (Phase 0014 Design Completed).**
 - Create a local benchmark runner for automated testing.
 - Begin work on a TCP/AI linter for IDEs and text editors.
 
