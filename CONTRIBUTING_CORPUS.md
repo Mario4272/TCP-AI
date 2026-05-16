@@ -19,7 +19,7 @@ Each record in the corpus must be a single JSON line with the following fields:
 - `category`: One of the valid categories from the [Spec Registry](spec/tcpai-v0.3.json).
 - `natural_prompt`: The original, verbose natural language prompt.
 - `tcp_prompt`: The compressed TCP/AI version.
-- `markers`: A space-separated list of the markers used.
+- `markers`: A JSON array of TCP/AI markers used in `tcp_prompt`, for example `["?", ".b"]`.
 - `expected_response_shape`: A brief description of the intended output.
 - `risk_notes`: Potential failure modes or ambiguity introduced by compression.
 - `compression_notes`: Rationale for specific compression choices.

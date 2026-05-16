@@ -16,7 +16,7 @@ def validate_spec(spec_path):
         with open(spec_path, 'r', encoding='utf-8') as f:
             spec = json.load(f)
     except Exception as e:
-        print(f"Error: Failed to parse JSON: {e}")
+        print(f"Error: Failed to parse JSON: {e}", file=sys.stderr)
         return False
 
     errors = []
@@ -29,7 +29,7 @@ def validate_spec(spec_path):
 
     if errors:
         for err in errors:
-            print(f"  [ERROR] {err}")
+            print(f"  [ERROR] {err}", file=sys.stderr)
         return False
 
     # 2. Type validation
@@ -53,7 +53,21 @@ def validate_spec(spec_path):
         if opt_fields is not None and not isinstance(opt_fields, list):
             errors.append("Key 'corpus_schema.optional_fields' must be an array.")
 
-    # 3. Marker validation
+    # 3. Syntax notes validation (Strengthened)
+    if not isinstance(spec.get("syntax_notes"), dict):
+        errors.append("Key 'syntax_notes' must be an object.")
+    else:
+        notes = spec["syntax_notes"]
+        if "parentheses" not in notes:
+            errors.append("Missing 'syntax_notes.parentheses' entry.")
+        else:
+            note_content = notes["parentheses"]
+            if not isinstance(note_content, str) or not note_content.strip():
+                errors.append("'syntax_notes.parentheses' must be a non-empty string.")
+            elif "not a marker" not in note_content.lower():
+                errors.append("'syntax_notes.parentheses' note should explicitly mention it is not a marker.")
+
+    # 4. Marker validation
     valid_marker_types = {"modality", "response_shape", "register"}
     if isinstance(spec.get("markers"), dict):
         for marker, info in spec["markers"].items():
@@ -68,7 +82,7 @@ def validate_spec(spec_path):
             if not info.get("meaning"):
                 errors.append(f"Marker '{marker}' is missing a 'meaning' string.")
 
-    # 4. Category validation
+    # 5. Category validation
     if isinstance(spec.get("categories"), dict):
         for cat, info in spec["categories"].items():
             if not isinstance(info, dict):
@@ -78,15 +92,10 @@ def validate_spec(spec_path):
             if not info.get("description"):
                 errors.append(f"Category '{cat}' is missing a 'description' string.")
 
-    # 5. Syntax notes validation
-    if isinstance(spec.get("syntax_notes"), dict):
-        if "parentheses" not in spec["syntax_notes"]:
-            errors.append("Missing 'syntax_notes.parentheses' entry.")
-
     if errors:
-        print(f"Validation failed with {len(errors)} errors:")
+        print(f"Validation failed with {len(errors)} errors:", file=sys.stderr)
         for err in errors:
-            print(f"  [ERROR] {err}")
+            print(f"  [ERROR] {err}", file=sys.stderr)
         return False
 
     print("PASS: Spec registry structure is valid.")
@@ -94,7 +103,6 @@ def validate_spec(spec_path):
 
 def main():
     parser = argparse.ArgumentParser(description="Validate TCP/AI spec registry structure.")
-    parser.add_index = True # Placeholder for future expansion
     parser.add_argument("--spec", type=str, default="spec/tcpai-v0.3.json", help="Path to spec JSON.")
     args = parser.parse_args()
 
