@@ -37,7 +37,7 @@ Update the `summarize_token_counts.py` tool (or create a companion tool) to aggr
 **Labels**: `benchmark`, `evaluation`, `tooling`
 
 **Body**:
-Design and test a stable prompt for using frontier models (GPT-4, Claude 3, etc.) as an "LLM Judge" to provide preliminary semantic fidelity scores.
+Design and test a stable prompt for using one or more frontier or locally hosted LLMs as optional review assistants to provide preliminary semantic fidelity scores. This is intended to supplement, not replace, human review.
 
 **Acceptance Criteria**:
 - Evaluation prompt is documented and versioned.

@@ -57,7 +57,7 @@ Does the compression introduce new confusion not present in the original?
 Does the compression avoid distorting sensitive context or amplifying risks?
 - **2**: Safe and matches natural intent.
 - **1**: Minor distortion of risk profile.
-- **0**: Compression makes the prompt appears to violate safety or privacy in a way the original did not.
+- **0**: Compression makes the prompt appear to violate safety or privacy in a way the original did not.
 
 ### 8. Marker Correctness
 Are TCP/AI markers used consistently with the specification?
