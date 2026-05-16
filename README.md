@@ -4,7 +4,7 @@
 
 TCP/AI is intended to reduce unnecessary user-input tokens while preserving meaning, tone, certainty, register, and requested response shape. It is a lightweight convention that works today through a short system-prompt primer and can later evolve toward tooling and native model support.
 
-> Status: **v0.3 draft** for community feedback. Empirical benchmarks are currently pending.
+> Status: **v0.3 draft** for community feedback. v0.2 benchmarks are live (100 records).
 
 ## Why this exists
 
@@ -57,6 +57,7 @@ TCP/AI preserves whole content words and removes low-value conversational scaffo
 - [`EXAMPLES.md`](EXAMPLES.md) — expanded examples and patterns
 - [`BENCHMARKS.md`](BENCHMARKS.md) — benchmark methodology and comparison matrix
 - [`benchmarks/`](benchmarks/) — methodology and rubrics for evaluation
+- [`benchmarks/reports/seed_v0.2_benchmark_summary.md`](benchmarks/reports/seed_v0.2_benchmark_summary.md) — latest v0.2 benchmark results
 - [`corpus/`](corpus/) — benchmark prompt pairs dataset
 - [`primer/system-prompt.txt`](primer/system-prompt.txt) — copy-pasteable primer for current LLMs
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — how to propose changes
