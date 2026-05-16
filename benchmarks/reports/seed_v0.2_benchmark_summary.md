@@ -3,6 +3,7 @@
 ## 1. Dataset Information
 - **Corpus**: `corpus/seed/prompts_v0.2.jsonl`
 - **Unique Prompt Records**: 100
+- **Tokenizers**: `o200k_base`, `cl100k_base`
 - **Total Tokenizer Samples**: 200
 - **Categories**: 12
 
@@ -21,24 +22,24 @@
 ## 3. Performance by Tokenizer
 | Tokenizer | Mean Reduction | Min | Max | Overall Reduction |
 |---|---|---|---|---|
-| `cl100k_base` | 41.20% | 6.25% | 76.00% | 42.87% |
 | `o200k_base` | 40.44% | 6.25% | 72.00% | 42.23% |
+| `cl100k_base` | 41.20% | 6.25% | 76.00% | 42.87% |
 
 ## 4. Performance by Category
-| Category | Samples | Mean Reduction | Min | Max | Total Saved |
-|---|---|---|---|---|---|
-| `architecture` | 16 | 34.69% | 19.05% | 46.67% | 91 |
-| `brainstorming` | 16 | 47.33% | 26.67% | 62.50% | 122 |
-| `brief_explanation` | 16 | 53.37% | 30.00% | 76.00% | 132 |
-| `coding_request` | 18 | 47.59% | 30.77% | 66.67% | 191 |
-| `debugging_request` | 18 | 41.05% | 12.50% | 60.71% | 165 |
-| `decision_recommendation` | 16 | 46.65% | 26.67% | 61.11% | 126 |
-| `general_qna` | 16 | 44.29% | 6.25% | 70.00% | 124 |
-| `personal_important` | 16 | 38.55% | 26.67% | 70.00% | 100 |
-| `skeptical_review` | 16 | 35.64% | 12.50% | 61.90% | 93 |
-| `structured_data_wrapper` | 18 | 32.25% | 14.29% | 50.00% | 86 |
-| `technical_explanation` | 18 | 42.93% | 14.29% | 70.00% | 134 |
-| `writing_editing` | 16 | 25.40% | 7.14% | 46.67% | 58 |
+| Category | Records | Samples | Mean Reduction | Min | Max | Total Saved |
+|---|---|---|---|---|---|---|
+| `architecture` | 8 | 16 | 34.69% | 19.05% | 46.67% | 91 |
+| `brainstorming` | 8 | 16 | 47.33% | 26.67% | 62.50% | 122 |
+| `brief_explanation` | 8 | 16 | 53.37% | 30.00% | 76.00% | 132 |
+| `coding_request` | 9 | 18 | 47.59% | 30.77% | 66.67% | 191 |
+| `debugging_request` | 9 | 18 | 41.05% | 12.50% | 60.71% | 165 |
+| `decision_recommendation` | 8 | 16 | 46.65% | 26.67% | 61.11% | 126 |
+| `general_qna` | 8 | 16 | 44.29% | 6.25% | 70.00% | 124 |
+| `personal_important` | 8 | 16 | 38.55% | 26.67% | 70.00% | 100 |
+| `skeptical_review` | 8 | 16 | 35.64% | 12.50% | 61.90% | 93 |
+| `structured_data_wrapper` | 9 | 18 | 32.25% | 14.29% | 50.00% | 86 |
+| `technical_explanation` | 9 | 18 | 42.93% | 14.29% | 70.00% | 134 |
+| `writing_editing` | 8 | 16 | 25.40% | 7.14% | 46.67% | 58 |
 
 ## 5. Benchmark Limitations
 - **Semantic Fidelity**: This benchmark measures token reduction only, not meaning preservation.

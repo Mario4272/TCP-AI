@@ -13,19 +13,32 @@ def calculate_metrics(rows):
     else:
         overall_reduction = (total_saved / total_natural) * 100
         
-    reductions = [float(row['token_reduction_percent']) for row in rows]
+    reductions = sorted([float(row['token_reduction_percent']) for row in rows])
+    n = len(reductions)
+    if n == 0:
+        median_reduction = 0.0
+    elif n % 2 == 1:
+        median_reduction = reductions[n//2]
+    else:
+        median_reduction = (reductions[n//2 - 1] + reductions[n//2]) / 2
     
     return {
-        "count": len(rows),
+        "count": n,
         "total_natural": total_natural,
         "total_tcp": total_tcp,
         "total_saved": total_saved,
         "overall_reduction": overall_reduction,
-        "mean_reduction": sum(reductions) / len(reductions) if reductions else 0.0,
-        "median_reduction": sorted(reductions)[len(reductions)//2] if reductions else 0.0,
-        "min_reduction": min(reductions) if reductions else 0.0,
-        "max_reduction": max(reductions) if reductions else 0.0
+        "mean_reduction": sum(reductions) / n if n > 0 else 0.0,
+        "median_reduction": median_reduction,
+        "min_reduction": reductions[0] if n > 0 else 0.0,
+        "max_reduction": reductions[-1] if n > 0 else 0.0
     }
+
+def get_stable_tokenizers(tokenizers):
+    preferred = ["o200k_base", "cl100k_base"]
+    known = [t for t in preferred if t in tokenizers]
+    others = sorted([t for t in tokenizers if t not in preferred])
+    return known + others
 
 def format_markdown(summary, category_summaries, tokenizer_summaries, corpus_info):
     lines = []
@@ -34,6 +47,7 @@ def format_markdown(summary, category_summaries, tokenizer_summaries, corpus_inf
     lines.append("## 1. Dataset Information")
     lines.append(f"- **Corpus**: `{corpus_info['path']}`")
     lines.append(f"- **Unique Prompt Records**: {corpus_info['record_count']}")
+    lines.append(f"- **Tokenizers**: {', '.join([f'`{t}`' for t in get_stable_tokenizers(tokenizer_summaries.keys())])}")
     lines.append(f"- **Total Tokenizer Samples**: {summary['count']}")
     lines.append(f"- **Categories**: {len(category_summaries)}")
     lines.append("")
@@ -54,17 +68,19 @@ def format_markdown(summary, category_summaries, tokenizer_summaries, corpus_inf
     lines.append("## 3. Performance by Tokenizer")
     lines.append("| Tokenizer | Mean Reduction | Min | Max | Overall Reduction |")
     lines.append("|---|---|---|---|---|")
-    for tok in sorted(tokenizer_summaries.keys()):
+    for tok in get_stable_tokenizers(tokenizer_summaries.keys()):
         s = tokenizer_summaries[tok]
         lines.append(f"| `{tok}` | {s['mean_reduction']:.2f}% | {s['min_reduction']:.2f}% | {s['max_reduction']:.2f}% | {s['overall_reduction']:.2f}% |")
     lines.append("")
     
     lines.append("## 4. Performance by Category")
-    lines.append("| Category | Samples | Mean Reduction | Min | Max | Total Saved |")
-    lines.append("|---|---|---|---|---|---|")
+    lines.append("| Category | Records | Samples | Mean Reduction | Min | Max | Total Saved |")
+    lines.append("|---|---|---|---|---|---|---|")
     for cat in sorted(category_summaries.keys()):
         s = category_summaries[cat]
-        lines.append(f"| `{cat}` | {s['count']} | {s['mean_reduction']:.2f}% | {s['min_reduction']:.2f}% | {s['max_reduction']:.2f}% | {s['total_saved']} |")
+        # Calculate unique records in this category
+        unique_records = len(set(row['id'] for row in s['rows']))
+        lines.append(f"| `{cat}` | {unique_records} | {s['count']} | {s['mean_reduction']:.2f}% | {s['min_reduction']:.2f}% | {s['max_reduction']:.2f}% | {s['total_saved']} |")
     lines.append("")
 
     lines.append("## 5. Benchmark Limitations")
@@ -115,20 +131,24 @@ def main():
         by_category[row['category']].append(row)
         unique_ids.add(row['id'])
         
-    # Summaries
+    # Summaries - need to store rows to calculate unique records per category later
     overall = calculate_metrics(rows)
     tokenizer_summaries = {tok: calculate_metrics(r) for tok, r in by_tokenizer.items()}
-    category_summaries = {cat: calculate_metrics(r) for cat, r in by_category.items()}
+    category_summaries = {}
+    for cat, r in by_category.items():
+        metrics = calculate_metrics(r)
+        metrics['rows'] = r
+        category_summaries[cat] = metrics
     
     corpus_info = {
-        "path": "corpus/seed/prompts_v0.2.jsonl", # Hardcoded for now as per phase requirements
+        "path": "corpus/seed/prompts_v0.2.jsonl",
         "record_count": len(unique_ids)
     }
     
     # Text Output
     print("=== TCP/AI Benchmark Summary ===")
     print(f"Unique Records: {corpus_info['record_count']}")
-    print(f"Tokenizers:     {', '.join(sorted(tokenizer_summaries.keys()))}")
+    print(f"Tokenizers:     {', '.join(get_stable_tokenizers(tokenizer_summaries.keys()))}")
     print(f"Overall Reduction: {overall['overall_reduction']:.2f}%")
     print(f"Mean Reduction:    {overall['mean_reduction']:.2f}%")
     print(f"Median Reduction:  {overall['median_reduction']:.2f}%")

@@ -20,7 +20,7 @@ python tools/benchmark-report/summarize_token_counts.py \
 
 ## Metrics
 - **Mean Reduction**: Average of the reduction percentages for each record.
-- **Median Reduction**: The middle value of the reduction percentages.
+- **Median Reduction**: The middle value (or average of two middle values for even-sized datasets) of the reduction percentages.
 - **Overall Reduction**: Calculated as `(total_tokens_saved / total_natural_tokens) * 100`.
 - **Min/Max**: The range of compression observed across the dataset.
 

@@ -179,11 +179,11 @@ Expected distinction:
 ```text
 TCP/AI = manually writable, human-readable shorthand
 LLMLingua family = machine-generated compression, stronger for long prompts/RAG, less human-readable
+```
 
 ## Safe vs. Unsafe Claims
 
 Before interpreting or publishing benchmark results, please review the [Safe vs. Unsafe Claims](docs/releases/v0.2-benchmark-snapshot.md#5-safe-vs-unsafe-claims) section in our latest snapshot. We prioritize empirical honesty over marketing.
-```
 
 ## Minimum viable benchmark run
 
