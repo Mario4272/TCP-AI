@@ -212,6 +212,7 @@ benchmarks/
 └── validation/
     ├── seed_v0.1_validation.sample.txt          # Historical v0.1 report
     └── seed_v0.2_validation.sample.txt          # Current v0.2 report
+```
 
 ## Reporting Tool
 
@@ -222,7 +223,6 @@ python tools/benchmark-report/summarize_token_counts.py \
   --output benchmarks/reports/seed_v0.2_benchmark_summary.md
 ```
 See the [Reporting Tool README](tools/benchmark-report/README.md) for more details.
-```
 
 ## Reporting template
 
