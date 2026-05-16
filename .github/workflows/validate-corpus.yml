@@ -29,3 +29,8 @@ jobs:
 
       - name: Verify token-count reproducibility
         run: diff -u --strip-trailing-cr benchmarks/results/seed_v0.1_token_counts.sample.csv /tmp/smoke_test_counts.csv
+
+      - name: Verify multi-tokenizer reproducibility
+        run: |
+          python tools/token-count/count_tokens.py --input corpus/seed/prompts_v0.1.jsonl --output /tmp/multi_smoke_test.csv --tokenizer all
+          diff -u --strip-trailing-cr benchmarks/results/seed_v0.1_token_counts.multi.sample.csv /tmp/multi_smoke_test.csv

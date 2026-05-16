@@ -1,0 +1,125 @@
+{
+  "version": "0.3",
+  "markers": {
+    "?": {
+      "type": "modality",
+      "meaning": "curious / open-ended"
+    },
+    "!": {
+      "type": "modality",
+      "meaning": "urgent / important"
+    },
+    "~": {
+      "type": "modality",
+      "meaning": "casual / brainstorming"
+    },
+    "=": {
+      "type": "modality",
+      "meaning": "precise / definitive answer wanted"
+    },
+    ">": {
+      "type": "modality",
+      "meaning": "skeptical / push back"
+    },
+    "+": {
+      "type": "modality",
+      "meaning": "follow-up / continue prior"
+    },
+    "*": {
+      "type": "modality",
+      "meaning": "personally important"
+    },
+    ".b": {
+      "type": "response_shape",
+      "meaning": "brief, 1 to 3 sentences"
+    },
+    ".m": {
+      "type": "response_shape",
+      "meaning": "medium/default"
+    },
+    ".l": {
+      "type": "response_shape",
+      "meaning": "long/full treatment"
+    },
+    ".opt": {
+      "type": "response_shape",
+      "meaning": "options, do not pick"
+    },
+    ".rec": {
+      "type": "response_shape",
+      "meaning": "recommendation"
+    },
+    ".why": {
+      "type": "response_shape",
+      "meaning": "show reasoning"
+    },
+    ".ans": {
+      "type": "response_shape",
+      "meaning": "answer only"
+    },
+    ".blunt": {
+      "type": "register",
+      "meaning": "direct, less diplomacy"
+    },
+    ".soft": {
+      "type": "register",
+      "meaning": "diplomatic framing"
+    }
+  },
+  "categories": {
+    "general_qna": {
+      "description": "General factual or reference-style questions"
+    },
+    "brief_explanation": {
+      "description": "Short, concise explanations or definitions"
+    },
+    "technical_explanation": {
+      "description": "Deep dives into technical or scientific topics"
+    },
+    "coding_request": {
+      "description": "Requests for code generation or software architecture"
+    },
+    "debugging_request": {
+      "description": "Assistance with fixing errors or optimizing code"
+    },
+    "writing_editing": {
+      "description": "Creative or formal writing, editing, and proofreading"
+    },
+    "brainstorming": {
+      "description": "Idea generation and creative exploration"
+    },
+    "architecture": {
+      "description": "Systems design and high-level conceptual planning"
+    },
+    "decision_recommendation": {
+      "description": "Requests for help making choices or selecting options"
+    },
+    "skeptical_review": {
+      "description": "Critical analysis or steel-manning of arguments"
+    },
+    "personal_important": {
+      "description": "Sensitive, private, or high-stakes personal context"
+    },
+    "structured_data_wrapper": {
+      "description": "Handling and transforming data payloads (JSON, CSV, etc.)"
+    }
+  },
+  "corpus_schema": {
+    "required_fields": [
+      "id",
+      "category",
+      "natural_prompt",
+      "tcp_prompt",
+      "markers",
+      "expected_response_shape",
+      "risk_notes",
+      "compression_notes"
+    ],
+    "optional_fields": [
+      "metadata"
+    ]
+  },
+  "syntax_notes": {
+    "parentheses": "Allowed for grouping/context; not a v0.3 marker."
+  }
+}

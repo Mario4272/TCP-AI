@@ -1,37 +1,56 @@
 import argparse
 import collections
 import json
+import pathlib
 import sys
 
-VALID_CATEGORIES = {
-    "general_qna",
-    "brief_explanation",
-    "technical_explanation",
-    "coding_request",
-    "debugging_request",
-    "writing_editing",
-    "brainstorming",
-    "architecture",
-    "decision_recommendation",
-    "skeptical_review",
-    "personal_important",
-    "structured_data_wrapper"
-}
-
-VALID_MARKERS = {
-    "?", "!", "~", "=", ">", "+", "*", ".b", ".m", ".l", ".opt", ".rec", ".why", ".ans", ".blunt", ".soft"
-}
-
-REQUIRED_FIELDS = [
-    "id", "category", "natural_prompt", "tcp_prompt", 
-    "markers", "expected_response_shape", "risk_notes", "compression_notes"
-]
+def load_spec(spec_path):
+    try:
+        with open(spec_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print(f"Error: Spec file not found at {spec_path}", file=sys.stderr)
+        sys.exit(1)
+    except json.JSONDecodeError as e:
+        print(f"Error: Invalid JSON in spec file {spec_path} - {e}", file=sys.stderr)
+        sys.exit(1)
 
 def main():
     parser = argparse.ArgumentParser(description="Validate TCP/AI corpus JSONL")
     parser.add_argument("--input", required=True, help="Path to input JSONL corpus")
     parser.add_argument("--output", help="Path to save output report (prints to stdout if omitted)")
+    parser.add_argument("--spec", help="Path to TCP/AI spec JSON (default: spec/tcpai-v0.3.json)")
     args = parser.parse_args()
+
+    # Resolve spec path
+    if args.spec:
+        spec_path = pathlib.Path(args.spec)
+    else:
+        # Default to spec/tcpai-v0.3.json relative to repo root
+        # Script is in tools/corpus-validator/validate_corpus.py
+        # Root is ../../
+        script_dir = pathlib.Path(__file__).parent
+        spec_path = script_dir.parent.parent / "spec" / "tcpai-v0.3.json"
+
+    spec = load_spec(spec_path)
+    
+    # Core spec validation
+    if not isinstance(spec.get("version"), str):
+        print(f"Error: Spec file {spec_path} is missing a 'version' string.", file=sys.stderr)
+        sys.exit(1)
+    if not isinstance(spec.get("markers"), dict):
+        print(f"Error: Spec file {spec_path} is missing a 'markers' object.", file=sys.stderr)
+        sys.exit(1)
+    if not isinstance(spec.get("categories"), dict):
+        print(f"Error: Spec file {spec_path} is missing a 'categories' object.", file=sys.stderr)
+        sys.exit(1)
+    if not isinstance(spec.get("corpus_schema"), dict) or not isinstance(spec["corpus_schema"].get("required_fields"), list):
+        print(f"Error: Spec file {spec_path} is missing a valid 'corpus_schema.required_fields' array.", file=sys.stderr)
+        sys.exit(1)
+
+    valid_categories = set(spec.get("categories", {}).keys())
+    valid_markers = set(spec.get("markers", {}).keys())
+    required_fields = spec.get("corpus_schema", {}).get("required_fields", [])
 
     errors = []
     warnings = []
@@ -54,7 +73,7 @@ def main():
                     continue
                 
                 # Check required fields
-                missing_fields = [f for f in REQUIRED_FIELDS if f not in record]
+                missing_fields = [f for f in required_fields if f not in record]
                 if missing_fields:
                     errors.append(f"Line {line_no}: Missing required fields: {', '.join(missing_fields)}")
                     continue
@@ -69,7 +88,7 @@ def main():
                     errors.append(f"Line {line_no}: Duplicate ID '{rec_id}'")
                 seen_ids.add(rec_id)
 
-                if category not in VALID_CATEGORIES:
+                if category not in valid_categories:
                     errors.append(f"Line {line_no}: Invalid category '{category}'")
                 category_counts[category] += 1
 
@@ -77,7 +96,7 @@ def main():
                     errors.append(f"Line {line_no}: 'markers' must be an array")
                 else:
                     for m in markers:
-                        if m not in VALID_MARKERS:
+                        if m not in valid_markers:
                             errors.append(f"Line {line_no}: Invalid marker '{m}'")
                         marker_counts[m] += 1
                     
@@ -90,7 +109,7 @@ def main():
                         # Find apparent markers in tcp_prompt
                         tokens = tcp_prompt.split()
                         for i, token in enumerate(tokens):
-                            if token in VALID_MARKERS and token not in markers:
+                            if token in valid_markers and token not in markers:
                                 # Be conservative with single-char punctuation-like markers
                                 if len(token) == 1 and token in {"?", "!", "~", "=", ">", "+", "*"}:
                                     if i == 0 or i == len(tokens) - 1:

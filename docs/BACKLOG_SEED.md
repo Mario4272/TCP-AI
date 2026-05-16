@@ -14,6 +14,8 @@ This document contains a seed/index of proposed initial issues to be added to th
 
 ### 2. Create single source of truth for TCP/AI markers and corpus categories
 - **Live Issue**: [#6](https://github.com/Mario4272/TCP-AI/issues/6)
+- **Status**: **Completed** (Phase 0009)
+- **Description**: Created `spec/tcpai-v0.3.json` as the canonical registry and refactored the validator to consume it.
 - **Labels**: `tech-debt`, `spec`, `tooling`
 
 ### 3. Harden token-count tool to create output directories automatically
@@ -32,4 +34,6 @@ This document contains a seed/index of proposed initial issues to be added to th
 
 ### 6. Add multi-tokenizer support beyond tiktoken baseline
 - **Live Issue**: [#10](https://github.com/Mario4272/TCP-AI/issues/10)
+- **Status**: **Advanced** (Phase 0009)
+- **Description**: Expanded `count_tokens.py` to support multiple tiktoken encodings and documented the long-term [Tokenizer Strategy](../docs/TOKENIZER_STRATEGY.md).
 - **Labels**: `benchmark`, `tooling`
