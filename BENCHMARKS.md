@@ -4,6 +4,8 @@ TCP/AI's claims should be validated empirically. Heuristic token-reduction estim
 
 ## Benchmark goals
 
+*See [methodology.md](benchmarks/methodology.md) for detailed evaluation strategies and [rubric.md](benchmarks/rubric.md) for quality preservation rubrics.*
+
 Measure whether TCP/AI reduces user-input tokens **without materially degrading answer quality, tone fidelity, or round-trip safety**.
 
 Core questions:

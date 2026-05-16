@@ -1,14 +1,14 @@
 # TCP/AI Roadmap
 
-TCP/AI is currently in **Phase 1: Repo Hardening and Documentation**. 
+TCP/AI is currently in **Phase 2: Empirical Benchmarking**. 
 The goal is to evolve from a draft specification into a fully benchmarked protocol with robust community tooling.
 
-## Phase 1: Repo Hardening (Current)
+## Phase 1: Repo Hardening (Completed)
 - Establish repository structure and open-source hygiene.
 - Finalize issue templates, pull request processes, and governance.
 - Clean up documentation and outline future benchmark schemas.
 
-## Phase 2: Empirical Benchmarking
+## Phase 2: Empirical Benchmarking (Current)
 - Build out the initial prompt corpus (JSONL).
 - Gather community benchmark submissions across different models (frontier, open-weight, and local models).
 - Validate tokenizer counts and compression ratios.
