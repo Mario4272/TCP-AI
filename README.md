@@ -60,6 +60,9 @@ TCP/AI preserves whole content words and removes low-value conversational scaffo
 - [`corpus/`](corpus/) — benchmark prompt pairs dataset
 - [`primer/system-prompt.txt`](primer/system-prompt.txt) — copy-pasteable primer for current LLMs
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — how to propose changes
+- [`docs/BACKLOG_SEED.md`](docs/BACKLOG_SEED.md) — initial backlog seed and upcoming tasks
+- [`docs/ISSUE_LABELS.md`](docs/ISSUE_LABELS.md) — project management label definitions
+- [**.github/workflows/**](.github/workflows/) — automated CI validation (corpus integrity & smoke tests)
 - [`SECURITY.md`](SECURITY.md) — security policy
 - [`GOVERNANCE.md`](GOVERNANCE.md) — project governance
 - [`CHANGELOG.md`](CHANGELOG.md) — version history

@@ -1,0 +1,28 @@
+name: Validate Corpus
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r tools/token-count/requirements.txt
+
+      - name: Run corpus validator
+        run: python tools/corpus-validator/validate_corpus.py --input corpus/seed/prompts_v0.1.jsonl
+
+      - name: Run token-count smoke test
+        run: python tools/token-count/count_tokens.py --input corpus/seed/prompts_v0.1.jsonl --output /tmp/smoke_test_counts.csv
