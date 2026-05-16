@@ -5,6 +5,7 @@ This document outlines the conceptual methodology for the TCP/AI benchmark. Form
 ## 1. Token Reduction Measurement
 The primary efficiency metric is the compression ratio, defined as the token count of the TCP/AI shorthand prompt divided by the token count of the original natural language prompt.
 - **Metric**: `Compression Ratio = TCP_Tokens / Natural_Tokens`
+- **Metric**: `Token Reduction % = (Natural_Tokens - TCP_Tokens) / Natural_Tokens * 100`
 - **Goal**: Measure the raw input efficiency gain without degrading the quality of the model's response.
 - **Note**: Exact token counts depend on the tokenizer used (e.g., tiktoken for OpenAI models, Llama tokenizer).
 
@@ -18,7 +19,7 @@ To properly evaluate TCP/AI, it must be compared against established baselines.
 
 ### A. Structured-Data Lane
 - **Baselines**: TOON (Task-Oriented Object Notation), JSON, YAML, CSV, XML.
-- **Purpose**: Compare the authoring ergonomics and token efficiency of TCP/AI against standard structured data formats for specific, highly structured tasks.
+- **Purpose**: TCP/AI compresses the human instruction *around* structured data, whereas TOON/JSON/YAML/CSV/XML are structured payload formats. Benchmarks should compare payload format efficiency separately from conversational instruction compression.
 
 ### B. Algorithmic Compressor Lane
 - **Baselines**: LLMLingua-family tools.
