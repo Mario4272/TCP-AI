@@ -34,13 +34,23 @@ def main():
 
     spec = load_spec(spec_path)
     
+    # Core spec validation
+    if not isinstance(spec.get("version"), str):
+        print(f"Error: Spec file {spec_path} is missing a 'version' string.", file=sys.stderr)
+        sys.exit(1)
+    if not isinstance(spec.get("markers"), dict):
+        print(f"Error: Spec file {spec_path} is missing a 'markers' object.", file=sys.stderr)
+        sys.exit(1)
+    if not isinstance(spec.get("categories"), dict):
+        print(f"Error: Spec file {spec_path} is missing a 'categories' object.", file=sys.stderr)
+        sys.exit(1)
+    if not isinstance(spec.get("corpus_schema"), dict) or not isinstance(spec["corpus_schema"].get("required_fields"), list):
+        print(f"Error: Spec file {spec_path} is missing a valid 'corpus_schema.required_fields' array.", file=sys.stderr)
+        sys.exit(1)
+
     valid_categories = set(spec.get("categories", {}).keys())
     valid_markers = set(spec.get("markers", {}).keys())
     required_fields = spec.get("corpus_schema", {}).get("required_fields", [])
-
-    if not valid_categories or not valid_markers or not required_fields:
-        print(f"Error: Spec file {spec_path} is missing required data (categories, markers, or schema).", file=sys.stderr)
-        sys.exit(1)
 
     errors = []
     warnings = []

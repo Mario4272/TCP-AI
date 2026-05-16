@@ -21,7 +21,11 @@ def main():
     if args.tokenizer == "all":
         tokenizer_names = ["o200k_base", "cl100k_base"]
     else:
-        tokenizer_names = [t.strip() for t in args.tokenizer.split(",")]
+        tokenizer_names = [t.strip() for t in args.tokenizer.split(",") if t.strip()]
+
+    if not tokenizer_names:
+        print("Error: No valid tokenizer names provided.", file=sys.stderr)
+        sys.exit(1)
 
     encodings = {}
     for name in tokenizer_names:
@@ -92,6 +96,8 @@ def main():
     if total_rows > 0:
         mean_reduction = statistics.mean(reductions)
         median_reduction = statistics.median(reductions)
+        min_reduction = min(reductions)
+        max_reduction = max(reductions)
 
         print("=== TCP/AI Token Count Summary ===")
         print(f"Input Records:    {len(results) // len(tokenizer_names)}")
@@ -99,6 +105,8 @@ def main():
         print(f"Total CSV Rows:   {total_rows}")
         print(f"Mean Reduction:   {mean_reduction:.2f}%")
         print(f"Median Reduction: {median_reduction:.2f}%")
+        print(f"Min Reduction:    {min_reduction:.2f}%")
+        print(f"Max Reduction:    {max_reduction:.2f}%")
         print(f"Results saved to: {args.output}")
     else:
         print("No records processed.")

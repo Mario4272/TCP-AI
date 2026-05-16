@@ -7,63 +7,63 @@
     },
     "!": {
       "type": "modality",
-      "meaning": "direct / blunt"
+      "meaning": "urgent / important"
     },
     "~": {
       "type": "modality",
-      "meaning": "casual / relaxed"
+      "meaning": "casual / brainstorming"
     },
     "=": {
       "type": "modality",
-      "meaning": "neutral / objective"
+      "meaning": "precise / definitive answer wanted"
     },
     ">": {
       "type": "modality",
-      "meaning": "authoritative / formal"
+      "meaning": "skeptical / push back"
     },
     "+": {
       "type": "modality",
-      "meaning": "enthusiastic / collaborative"
+      "meaning": "follow-up / continue prior"
     },
     "*": {
       "type": "modality",
-      "meaning": "urgent / critical"
+      "meaning": "personally important"
     },
     ".b": {
       "type": "response_shape",
-      "meaning": "bulleted list"
+      "meaning": "brief, 1 to 3 sentences"
     },
     ".m": {
       "type": "response_shape",
-      "meaning": "markdown formatted"
+      "meaning": "medium/default"
     },
     ".l": {
       "type": "response_shape",
-      "meaning": "links/references"
+      "meaning": "long/full treatment"
     },
     ".opt": {
-      "type": "register",
-      "meaning": "provide options"
+      "type": "response_shape",
+      "meaning": "options, do not pick"
     },
     ".rec": {
-      "type": "register",
-      "meaning": "provide recommendations"
+      "type": "response_shape",
+      "meaning": "recommendation"
     },
     ".why": {
-      "type": "register",
-      "meaning": "explain reasoning"
+      "type": "response_shape",
+      "meaning": "show reasoning"
     },
     ".ans": {
-      "type": "register",
-      "meaning": "direct answer only"
+      "type": "response_shape",
+      "meaning": "answer only"
     },
     ".blunt": {
       "type": "register",
-      "meaning": "no fluff / direct"
+      "meaning": "direct, less diplomacy"
     },
     ".soft": {
       "type": "register",
-      "meaning": "gentle / supportive"
+      "meaning": "diplomatic framing"
     }
   },
   "categories": {
