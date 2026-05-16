@@ -13,10 +13,9 @@ To help catch missing declarations, the validator identifies **apparent markers*
 Because single-character markers can appear naturally as punctuation in natural language or code, the validator uses conservative rules to avoid false positives:
 
 ### Single-Character Markers (`?`, `!`, `~`, `=`, `>`, `+`, `*`)
-A single-character marker is only flagged as an "apparent marker" if it appears as a **standalone token** in one of the following positions:
-- **At the beginning** of the `tcp_prompt` string.
-- **At the end** of the `tcp_prompt` string.
-- **As a standalone word** (separated by spaces) that is not part of a larger technical term.
+A single-character marker is only flagged as an "apparent marker" if it appears as a **standalone token** at the **beginning or end** of the `tcp_prompt` string.
+
+Inline standalone punctuation-like tokens are intentionally ignored to reduce false positives. For example, `Next.js + NestJS` and `1 + 1 = 2` do not trigger marker-mismatch warnings.
 
 ### Multi-Character Markers (`.b`, `.ans`, etc.)
 These markers are more specific and are flagged as apparent markers whenever they appear as standalone tokens anywhere in the `tcp_prompt`.

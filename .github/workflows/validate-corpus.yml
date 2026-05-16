@@ -28,4 +28,4 @@ jobs:
         run: python tools/token-count/count_tokens.py --input corpus/seed/prompts_v0.1.jsonl --output /tmp/smoke_test_counts.csv
 
       - name: Verify token-count reproducibility
-        run: diff --strip-trailing-cr benchmarks/results/seed_v0.1_token_counts.sample.csv /tmp/smoke_test_counts.csv
+        run: diff -u --strip-trailing-cr benchmarks/results/seed_v0.1_token_counts.sample.csv /tmp/smoke_test_counts.csv
