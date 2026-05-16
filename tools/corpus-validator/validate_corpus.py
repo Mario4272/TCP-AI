@@ -139,12 +139,16 @@ def main():
     report_lines.append(f"Final Status:  {'FAIL' if errors else 'PASS'}")
     
     report_lines.append("\n-- Category Distribution --")
-    for cat, count in category_counts.most_common():
-        report_lines.append(f"  {cat}: {count}")
+    for cat in sorted(valid_categories):
+        count = category_counts.get(cat, 0)
+        percentage = (count / total_records * 100) if total_records > 0 else 0
+        report_lines.append(f"  {cat}: {count} ({percentage:.2f}%)")
     
     report_lines.append("\n-- Marker Distribution --")
-    for m, count in marker_counts.most_common():
-        report_lines.append(f"  {m}: {count}")
+    # Sort markers by frequency (descending), then alphabetically
+    sorted_markers = sorted(marker_counts.items(), key=lambda x: (-x[1], x[0]))
+    for marker, count in sorted_markers:
+        report_lines.append(f"  {marker}: {count}")
 
     if errors:
         report_lines.append("\n-- Errors --")

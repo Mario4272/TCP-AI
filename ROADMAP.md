@@ -18,6 +18,7 @@ The goal is to evolve from a draft specification into a fully benchmarked protoc
 - Build a tokenizer counter for accurate metrics.
 - Develop a prompt-pair validator for CI pipelines.
 - **Automated CI, Backlog Tracking, and Spec Registry (Completed/Hardened).**
+- **Governance Tooling and Corpus Contribution Guides (Completed).**
 - **Tokenizer Strategy and Corpus Expansion (Planning/Foundation).**
 - Create a local benchmark runner for automated testing.
 - Begin work on a TCP/AI linter for IDEs and text editors.

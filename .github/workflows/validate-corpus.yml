@@ -21,6 +21,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r tools/token-count/requirements.txt
 
+      - name: Validate spec registry
+        run: python tools/spec-check/validate_spec_registry.py --spec spec/tcpai-v0.3.json
+
       - name: Run corpus validator
         run: python tools/corpus-validator/validate_corpus.py --input corpus/seed/prompts_v0.1.jsonl
 
