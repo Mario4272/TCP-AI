@@ -1,7 +1,7 @@
 === TCP/AI Corpus Validation Report ===
 Total Records: 36
 Errors Found:  0
-Warnings:      1
+Warnings:      0
 Final Status:  PASS
 
 -- Category Distribution --
@@ -31,6 +31,3 @@ Final Status:  PASS
   ?: 2
   .blunt: 2
   .opt: 2
-
--- Warnings --
-  [WARN]  Line 23: Apparent marker '+' in tcp_prompt but not in markers array.

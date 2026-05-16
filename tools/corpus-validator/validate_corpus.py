@@ -89,9 +89,14 @@ def main():
                         
                         # Find apparent markers in tcp_prompt
                         tokens = tcp_prompt.split()
-                        for token in tokens:
+                        for i, token in enumerate(tokens):
                             if token in VALID_MARKERS and token not in markers:
-                                warnings.append(f"Line {line_no}: Apparent marker '{token}' in tcp_prompt but not in markers array.")
+                                # Be conservative with single-char punctuation-like markers
+                                if len(token) == 1 and token in {"?", "!", "~", "=", ">", "+", "*"}:
+                                    if i == 0 or i == len(tokens) - 1:
+                                        warnings.append(f"Line {line_no}: Apparent marker '{token}' in tcp_prompt but not in markers array.")
+                                else:
+                                    warnings.append(f"Line {line_no}: Apparent marker '{token}' in tcp_prompt but not in markers array.")
                 
                 if not isinstance(natural_prompt, str) or not natural_prompt.strip():
                     errors.append(f"Line {line_no}: 'natural_prompt' must be a non-empty string")
