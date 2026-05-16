@@ -23,5 +23,5 @@ python count_tokens.py \
 
 ### Arguments
 - `--input`: Path to the input JSONL corpus (e.g., `corpus/seed/prompts_v0.1.jsonl`).
-- `--output`: Path where the results CSV should be saved.
+- `--output`: Path to save the resulting CSV report. Parent directories are created automatically if they do not exist.
 - `--tokenizer`: The `tiktoken` encoding to use (default: `o200k_base`). Supported encodings include `cl100k_base` and `o200k_base`.
