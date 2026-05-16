@@ -21,11 +21,11 @@ def main():
     if args.tokenizer == "all":
         tokenizer_names = ["o200k_base", "cl100k_base"]
     else:
-        tokenizer_names = [t.strip() for t in args.tokenizer.split(",") if t.strip()]
-
-    if not tokenizer_names:
-        print("Error: No valid tokenizer names provided.", file=sys.stderr)
-        sys.exit(1)
+        raw_names = args.tokenizer.split(",")
+        tokenizer_names = [name.strip() for name in raw_names]
+        if any(not name for name in tokenizer_names):
+            print("Error: Empty tokenizer name in comma-separated --tokenizer value.", file=sys.stderr)
+            sys.exit(1)
 
     encodings = {}
     for name in tokenizer_names:
