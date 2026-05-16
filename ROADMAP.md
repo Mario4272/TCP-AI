@@ -14,13 +14,14 @@ The goal is to evolve from a draft specification into a fully benchmarked protoc
 - Validate tokenizer counts and compression ratios.
 - Identify edge cases, failure modes, and areas needing specification updates.
 
-## Phase 3: Tooling Development (Completed)
+## Phase 3: Tooling Development (Current)
 - Build a tokenizer counter for accurate metrics.
 - Develop a prompt-pair validator for CI pipelines.
+- **Add automated CI validation and backlog tracking.**
 - Create a local benchmark runner for automated testing.
 - Begin work on a TCP/AI linter for IDEs and text editors.
 
-## Phase 4: Auto-Compression (Current)
+## Phase 4: Auto-Compression
 - Research algorithmic approaches to auto-compress natural language into TCP/AI shorthand.
 - Provide a CLI tool or extension for automatic conversion.
 
