@@ -1,0 +1,36 @@
+=== TCP/AI Corpus Validation Report ===
+Total Records: 36
+Errors Found:  0
+Warnings:      1
+Final Status:  PASS
+
+-- Category Distribution --
+  general_qna: 3
+  brief_explanation: 3
+  technical_explanation: 3
+  coding_request: 3
+  debugging_request: 3
+  writing_editing: 3
+  brainstorming: 3
+  architecture: 3
+  decision_recommendation: 3
+  skeptical_review: 3
+  personal_important: 3
+  structured_data_wrapper: 3
+
+-- Marker Distribution --
+  .b: 5
+  .ans: 5
+  ~: 5
+  .why: 5
+  .rec: 5
+  .l: 3
+  =: 3
+  .soft: 3
+  !: 3
+  ?: 2
+  .blunt: 2
+  .opt: 2
+
+-- Warnings --
+  [WARN]  Line 23: Apparent marker '+' in tcp_prompt but not in markers array.

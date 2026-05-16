@@ -7,13 +7,13 @@ The intended format for the TCP/AI prompt-pair corpus is JSONL (JSON Lines). Eac
 ```json
 {
   "id": "string (unique identifier)",
-  "category": "string (one of the defined benchmark categories)",
+  "category": "string (one of the 12 strict benchmark categories)",
   "natural_prompt": "string (the original verbose prompt)",
   "tcp_prompt": "string (the TCP/AI shorthand equivalent)",
-  "markers": ["array of strings (TCP/AI markers used)"],
-  "expected_response_shape": "string (optional description of the expected output)",
-  "risk_notes": "string (optional, notes on potential risks or nuance loss)",
-  "compression_notes": "string (optional, notes on the rationale behind the translation)",
+  "markers": ["array of strings (strict v0.3 TCP/AI markers)"],
+  "expected_response_shape": "string (description of the expected output)",
+  "risk_notes": "string (notes on potential risks or nuance loss)",
+  "compression_notes": "string (notes on the rationale behind the translation)",
   "metadata": {
     "natural_token_estimate": "integer (optional)",
     "tcp_token_estimate": "integer (optional)",
@@ -22,4 +22,4 @@ The intended format for the TCP/AI prompt-pair corpus is JSONL (JSON Lines). Eac
 }
 ```
 
-*Note: This schema is currently used for the `v0.1` seed corpus and will evolve as formal tooling is introduced.*
+*Note: This schema is strictly enforced by the `tools/corpus-validator` script for all corpus contributions.*
