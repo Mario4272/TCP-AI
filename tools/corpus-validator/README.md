@@ -15,6 +15,15 @@ python validate_corpus.py \
   --output ../../benchmarks/validation/seed_v0.1_validation.sample.txt
 ```
 
+### Validation Logic
+1.  **Schema**: Checks for the 8 required fields per record.
+2.  **Categories**: Enforces the 12 canonical TCP/AI categories.
+3.  **Markers**: 
+    - Validates the `markers` array against the v0.3 specification.
+    - Warns on apparent markers in prompt text that aren't declared in the array.
+    - Uses conservative heuristics for punctuation-like markers (see [MARKER_HEURISTICS.md](MARKER_HEURISTICS.md)).
+4.  **Compression**: Warns if the TCP prompt is longer than the natural prompt.
+
 ### Arguments
 - `--input`: Path to the input JSONL corpus (e.g., `corpus/seed/prompts_v0.1.jsonl`).
 - `--output` (Optional): Path where the validation report TXT should be saved. If omitted, the report is printed to `stdout`.
