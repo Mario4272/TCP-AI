@@ -34,4 +34,6 @@ To maintain the project's focus on transparency and reproducibility, adding new 
 - **Model Files**: If local model files (e.g., `.model` or `.json` files) are required, they should be clearly documented and handled outside of version control to avoid repo bloat.
 
 ## 4. Current Status
-As of Phase 0009, the project supports multi-tokenizer baseline runs for all `tiktoken` encodings. Evaluation of non-tiktoken paths is ongoing.
+As of Phase 0010, the project supports multi-tokenizer baseline runs for all `tiktoken` encodings. Comprehensive research on non-tiktoken paths and future adapter designs are documented here:
+- [Non-tiktoken Tokenizer Research](./NON_TIKTOKEN_TOKENIZER_RESEARCH.md)
+- [Tokenizer Adapter Design](./TOKENIZER_ADAPTER_DESIGN.md)
