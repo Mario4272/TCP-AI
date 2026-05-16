@@ -3,43 +3,45 @@
 This document outlines the architectural design for supporting multiple tokenizer families in the TCP/AI benchmark tooling without introducing dependency bloat or implementation complexity.
 
 ## 1. Current State
-The `count_tokens.py` script currently interacts directly with the `tiktoken` library. While it supports multiple encodings (e.g., `o200k_base`, `cl100k_base`), it is tightly coupled to the OpenAI-specific API.
+The `count_tokens.py` script uses the `TokenCounter` dataclass abstraction (introduced in Phase 0015) to support both `tiktoken` and optional local Hugging Face tokenizers. The tool supports multiple encodings (e.g., `o200k_base`, `cl100k_base`) and any user-supplied local `tokenizer.json` file.
 
-## 2. Proposed Abstraction: `TokenCounter`
+## 2. Implemented Abstraction: `TokenCounter` (Phase 0015)
 
-To support diverse families (tiktoken, HF, SentencePiece), we will introduce a lightweight internal abstraction.
+The `TokenCounter` dataclass is now implemented in `tools/token-count/count_tokens.py`.
 
-### Conceptual Interface
+### Implementation
 ```python
-class TokenCounter:
-    def __init__(self, name: str, family: str):
-        self.name = name
-        self.family = family
+from dataclasses import dataclass
+from typing import Callable
 
-    def count(self, text: str) -> int:
-        """Returns the number of tokens in the given text."""
-        raise NotImplementedError
+@dataclass
+class TokenCounter:
+    name: str
+    family: str  # "tiktoken" or "hf-local"
+    count: Callable[[str], int]
 ```
 
-### Planned Families
-- **tiktoken**: Built-in support for OpenAI encodings.
-- **hf_tokenizers**: Support for models via a local `tokenizer.json`.
-- **sentencepiece**: Support for models via a local `tokenizer.model`.
+This replaces the previous conceptual class-based proposal. It is simpler, requires no inheritance or abstract base classes, and keeps the tool readable.
 
-## 3. CLI Evolution
+### Implemented Families
+- **tiktoken** (`family="tiktoken"`): Built-in support for OpenAI encodings (`o200k_base`, `cl100k_base`).
+- **hf-local** (`family="hf-local"`): Optional support for models via a user-supplied local `tokenizer.json`.
 
-Future iterations of the token-count tool should support explicit paths to non-tiktoken assets to maintain an offline-first workflow.
+## 3. CLI Design (Implemented)
 
-### Proposed CLI Examples
 ```bash
 # Current (tiktoken baseline)
+--tokenizer o200k_base
 --tokenizer all
 
-# Future (Custom HF Tokenizer)
---tokenizer-hf llama3=./models/llama3/tokenizer.json
+# HF-local only (Phase 0015)
+--hf-tokenizer llama3=./path/to/tokenizer.json
 
-# Future (Custom SentencePiece)
---tokenizer-sp mistral=./models/mistral/tokenizer.model
+# Combined tiktoken + HF-local
+--tokenizer all --hf-tokenizer llama3=./path/to/tokenizer.json
+
+# Future (SentencePiece - not yet implemented)
+# --tokenizer-sp mistral=./models/mistral/tokenizer.model
 ```
 
 ## 4. Dependency Strategy

@@ -44,3 +44,21 @@ jobs:
         run: |
           python tools/token-count/count_tokens.py --input corpus/seed/prompts_v0.1.jsonl --output /tmp/smoke_test_v01.csv
           diff -u --strip-trailing-cr benchmarks/results/seed_v0.1_token_counts.sample.csv /tmp/smoke_test_v01.csv
+
+      - name: Install optional HF tokenizer dependency
+        run: pip install -r tools/token-count/requirements-hf.txt
+
+      - name: Verify HF fixture smoke test
+        run: |
+          python tools/token-count/count_tokens.py \
+            --input corpus/seed/prompts_v0.2.jsonl \
+            --output /tmp/hf_fixture_check.csv \
+            --hf-tokenizer tiny_hf=tools/token-count/fixtures/tiny-tokenizer.json
+          python -c "
+          import csv
+          with open('/tmp/hf_fixture_check.csv') as f:
+              rows = list(csv.DictReader(f))
+          assert len(rows) == 100, f'Expected 100 rows, got {len(rows)}'
+          assert all(r['tokenizer'] == 'tiny_hf' for r in rows), 'Expected tiny_hf label'
+          print(f'HF fixture smoke test passed: {len(rows)} rows, label=tiny_hf')
+          "
