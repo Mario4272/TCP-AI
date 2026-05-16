@@ -1,34 +1,33 @@
 # Backlog Seed
 
-This document contains a seed/index of proposed initial issues to be added to the GitHub Issue tracker. Once created in GitHub, the live issue tracker becomes the primary source of truth, and this document will serve as a historical reference.
+This document contains a seed/index of proposed initial issues to be added to the GitHub Issue tracker. 
 
-## Proposed Initial Issues
+> [!IMPORTANT]
+> **GitHub Issues are now the active source of truth for all backlog items.**
+> This file is maintained as historical seed/index documentation only. Please refer to the [live GitHub Issue tracker](https://github.com/Mario4272/TCP-AI/issues) for the current status and discussion of these items.
 
-### Issue 1: Add CI workflow for corpus validation and token-count smoke test
-- **Labels**: `ci`, `tooling`
-- **Goal**: Implement GitHub Actions to run the corpus validator and token-count script on every PR and push to `main`.
-- **Status**: (Implemented in Phase 0005)
+## Seed Issues Index
 
-### Issue 2: Create single source of truth for TCP/AI markers and corpus categories
+### 1. Add CI workflow for corpus validation and token-count smoke test
+- **Status**: **Completed** (Phase 0005)
+- **Description**: Implemented GitHub Actions to run the corpus validator and token-count script on every PR and push to `main`.
+
+### 2. Create single source of truth for TCP/AI markers and corpus categories
+- **Live Issue**: [#6](https://github.com/Mario4272/TCP-AI/issues/6)
 - **Labels**: `tech-debt`, `spec`, `tooling`
-- **Body**: Valid markers and corpus categories are currently duplicated across `SPEC.md`, `corpus/schema.md`, and `tools/corpus-validator/validate_corpus.py`. Create a shared machine-readable source later (e.g., `spec/tcpai-v0.3.json`) and update tooling to consume it.
 
-### Issue 3: Harden token-count tool to create output directories automatically
-- **Labels**: `tech-debt`, `tooling`
-- **Body**: `tools/token-count/count_tokens.py` assumes the output parent directory exists. Update the script to ensure the path is created automatically if missing.
+### 3. Harden token-count tool to create output directories automatically
+- **Live Issue**: [#7](https://github.com/Mario4272/TCP-AI/issues/7)
+- **Labels**: `tech-debt`, `tooling`, `good-first-issue`
 
-### Issue 4: Add reproducibility check for `seed_v0.1_token_counts.sample.csv`
+### 4. Add reproducibility check for `seed_v0.1_token_counts.sample.csv`
+- **Live Issue**: [#8](https://github.com/Mario4272/TCP-AI/issues/8)
 - **Labels**: `benchmark`, `tooling`, `ci`
-- **Body**: Implement a CI step that regenerates token counts from the seed corpus and compares the output against the committed sample CSV to ensure results are deterministic and reproducible.
 
-### Issue 5: Document marker-detection heuristic rules
+### 5. Document marker-detection heuristic rules
+- **Live Issue**: [#9](https://github.com/Mario4272/TCP-AI/issues/9)
 - **Labels**: `spec`, `tooling`, `documentation`
-- **Body**: The corpus validator uses specific conservative rules for marker detection. Formally document how this logic works and how it avoids false positives.
 
-### Issue 6: Add multi-tokenizer support beyond tiktoken baseline
+### 6. Add multi-tokenizer support beyond tiktoken baseline
+- **Live Issue**: [#10](https://github.com/Mario4272/TCP-AI/issues/10)
 - **Labels**: `benchmark`, `tooling`
-- **Body**: Research and implement support for additional tokenizer families beyond OpenAI (e.g., Llama/SentencePiece) in the baseline measurement scripts.
-
----
-
-*Note: Do not create these issues manually yet. Await formal approval to use the GitHub CLI or UI for backlog initialization.*
