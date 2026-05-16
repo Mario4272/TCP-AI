@@ -56,6 +56,8 @@ TCP/AI preserves whole content words and removes low-value conversational scaffo
 - [`SPEC.md`](SPEC.md) — canonical TCP/AI v0.3 draft specification
 - [`EXAMPLES.md`](EXAMPLES.md) — expanded examples and patterns
 - [`BENCHMARKS.md`](BENCHMARKS.md) — benchmark methodology and comparison matrix
+- [`benchmarks/`](benchmarks/) — methodology and rubrics for evaluation
+- [`corpus/`](corpus/) — benchmark prompt pairs dataset
 - [`primer/system-prompt.txt`](primer/system-prompt.txt) — copy-pasteable primer for current LLMs
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — how to propose changes
 - [`SECURITY.md`](SECURITY.md) — security policy
