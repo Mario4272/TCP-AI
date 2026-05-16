@@ -1,6 +1,7 @@
 import argparse
 import csv
 import json
+import pathlib
 import statistics
 import sys
 import tiktoken
@@ -64,12 +65,20 @@ def main():
         print(f"Error: File '{args.input}' not found.", file=sys.stderr)
         sys.exit(1)
 
-    with open(args.output, "w", encoding="utf-8", newline="") as outfile:
-        fieldnames = ["id", "category", "tokenizer", "natural_tokens", "tcp_tokens", "tokens_saved", "token_reduction_percent"]
-        writer = csv.DictWriter(outfile, fieldnames=fieldnames)
-        writer.writeheader()
-        for res in results:
-            writer.writerow(res)
+    try:
+        output_path = pathlib.Path(args.output)
+        if output_path.parent:
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            
+        with open(args.output, "w", encoding="utf-8", newline="") as outfile:
+            fieldnames = ["id", "category", "tokenizer", "natural_tokens", "tcp_tokens", "tokens_saved", "token_reduction_percent"]
+            writer = csv.DictWriter(outfile, fieldnames=fieldnames)
+            writer.writeheader()
+            for res in results:
+                writer.writerow(res)
+    except OSError as e:
+        print(f"Error writing to output file '{args.output}': {e}", file=sys.stderr)
+        sys.exit(1)
 
     record_count = len(results)
     if record_count > 0:
