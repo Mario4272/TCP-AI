@@ -22,10 +22,12 @@ This document contains a seed/index of proposed initial issues to be added to th
 
 ### 4. Add reproducibility check for `seed_v0.1_token_counts.sample.csv`
 - **Live Issue**: [#8](https://github.com/Mario4272/TCP-AI/issues/8)
+- **Status**: **Completed** (Phase 0008)
 - **Labels**: `benchmark`, `tooling`, `ci`
 
 ### 5. Document marker-detection heuristic rules
 - **Live Issue**: [#9](https://github.com/Mario4272/TCP-AI/issues/9)
+- **Status**: **Completed** (Phase 0008)
 - **Labels**: `spec`, `tooling`, `documentation`
 
 ### 6. Add multi-tokenizer support beyond tiktoken baseline
