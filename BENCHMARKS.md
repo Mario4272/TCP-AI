@@ -6,7 +6,9 @@ This document describes how we measure the performance of the TCP/AI shorthand p
 
 The TCP/AI benchmark consists of two primary evaluation layers:
 
-1.  **Token Reduction (Quantitative)**: Measuring the raw token savings using various tokenizers (tiktoken, etc.). This is currently fully implemented.
+1.  **Token Reduction (Quantitative)**: Measuring the raw token savings using various tokenizers. This is currently fully implemented.
+    - tiktoken (`o200k_base`, `cl100k_base`) — default baseline.
+    - Optional local Hugging Face tokenizers via `--hf-tokenizer NAME=PATH` (requires `pip install -r tools/token-count/requirements-hf.txt`).
 2.  **Semantic Fidelity (Qualitative)**: Measuring how well the compressed prompt preserves meaning, intent, and constraints. This is currently in the **Design & Scaffolding** phase.
 
 ## Current Baseline (v0.2)
