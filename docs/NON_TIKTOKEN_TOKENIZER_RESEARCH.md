@@ -71,7 +71,7 @@ Issue #10 ("Add multi-tokenizer support beyond tiktoken baseline") will be consi
 
 | Approach | Dependency Weight | Offline Support | CI Suitability | Setup Complexity | Recommended Phase |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **tiktoken** | Low | Native | High | Low | Phase 0001 (Done) |
+| **tiktoken** | Low | Native | High | Low | Current baseline |
 | **HF tokenizers** | Medium | via Local File | High | Medium | Phase 0011 |
 | **SentencePiece** | Medium | via Local File | High | Medium | Phase 0012+ |
 | **Transformers** | Very High | Poor (Default) | Low | Low | Not Recommended |

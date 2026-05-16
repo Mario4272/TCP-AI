@@ -16,10 +16,10 @@ This document outlines proposed future issues derived from the research and desi
   - Script added to GitHub Actions workflow.
 
 ### 2. Expand seed corpus to 100 prompt pairs
-- **Goal**: Scale the benchmark to improve statistical significance.
+- **Goal**: Scale the benchmark to improve statistical significance (v0.2 corpus).
 - **Proposed Labels**: `corpus`, `benchmark`
 - **Acceptance Criteria**:
-  - `corpus/seed/prompts_v0.1.jsonl` contains 100+ valid records.
+  - The expanded v0.2 corpus contains 100+ valid records.
   - All records pass the corpus validator.
   - Token-count samples updated for the new records.
 
@@ -41,5 +41,5 @@ This document outlines proposed future issues derived from the research and desi
 - **Proposed Labels**: `benchmark`, `tooling`
 - **Acceptance Criteria**:
   - `count_tokens.py` supports `--tokenizer-hf` using a local `tokenizer.json`.
-  - Dependencies are optional (`requirements-extra.txt`).
+  - Dependencies are optional (`requirements-hf.txt`).
   - No automatic network downloads or large binary commits.
