@@ -34,6 +34,16 @@ To maintain the project's focus on transparency and reproducibility, adding new 
 - **Model Files**: If local model files (e.g., `.model` or `.json` files) are required, they should be clearly documented and handled outside of version control to avoid repo bloat.
 
 ## 4. Current Status
-As of Phase 0010, the project supports multi-tokenizer baseline runs for all `tiktoken` encodings. Comprehensive research on non-tiktoken paths and future adapter designs are documented here:
+As of Phase 0015, the project supports multi-tokenizer baseline runs for all `tiktoken` encodings, and now includes **optional local Hugging Face tokenizer support** via the `tokenizers` library.
+
+### Optional HF Tokenizer Support (Phase 0015)
+- Users can supply any local `tokenizer.json` file via `--hf-tokenizer NAME=PATH`.
+- Requires: `pip install -r tools/token-count/requirements-hf.txt`.
+- No automatic downloads, no Hugging Face Hub calls, no model assets committed.
+- `--tokenizer all` remains tiktoken-only; HF tokenizers are additive.
+- Issue #20 closed by this implementation.
+- Issue #10 advanced but not yet closed.
+
+Further research on non-tiktoken paths and adapter designs is documented here:
 - [Non-tiktoken Tokenizer Research](./NON_TIKTOKEN_TOKENIZER_RESEARCH.md)
 - [Tokenizer Adapter Design](./TOKENIZER_ADAPTER_DESIGN.md)

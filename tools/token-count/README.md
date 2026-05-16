@@ -6,10 +6,10 @@ This tool establishes baseline token counts for the TCP/AI benchmark corpus. It 
 
 ### Core (required)
 - Python 3.8+
-- `tiktoken` — install via: `pip install -r requirements.txt`
+- `tiktoken` — install via: `pip install -r tools/token-count/requirements.txt`
 
 ### Optional — Local Hugging Face tokenizer support
-- `tokenizers` — install via: `pip install -r requirements-hf.txt`
+- `tokenizers` — install via: `pip install -r tools/token-count/requirements-hf.txt`
 
 No transformers, torch, sentencepiece, or HuggingFace Hub connection required.
 

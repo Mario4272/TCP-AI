@@ -110,8 +110,12 @@ def main():
     parser.add_argument("--output", required=True, help="Path to output CSV")
     parser.add_argument(
         "--tokenizer",
-        default="o200k_base",
-        help="tiktoken tokenizer(s) to use (comma-separated or 'all'). Default: o200k_base",
+        default=None,
+        help=(
+            "tiktoken tokenizer(s) to use (comma-separated or 'all'). "
+            "Default: o200k_base when no --hf-tokenizer is provided. "
+            "Omit to run HF-local tokenizers only."
+        ),
     )
     parser.add_argument(
         "--hf-tokenizer",
@@ -127,7 +131,15 @@ def main():
     args = parser.parse_args()
 
     # --- Build tiktoken counters ---
-    if args.tokenizer == "all":
+    # If no --tokenizer is given but --hf-tokenizer is, run HF-only.
+    # If neither is given, default to o200k_base.
+    hf_provided = bool(args.hf_tokenizers)
+    if args.tokenizer is None:
+        if hf_provided:
+            tiktoken_names = []  # HF-only mode
+        else:
+            tiktoken_names = ["o200k_base"]  # historical default
+    elif args.tokenizer == "all":
         tiktoken_names = ["o200k_base", "cl100k_base"]
     else:
         raw_names = args.tokenizer.split(",")
@@ -146,6 +158,18 @@ def main():
     if not counters:
         print("Error: No tokenizers selected. Provide --tokenizer or --hf-tokenizer.", file=sys.stderr)
         sys.exit(1)
+
+    # --- Reject duplicate tokenizer labels ---
+    seen_labels: set[str] = set()
+    for counter in counters:
+        if counter.name in seen_labels:
+            print(
+                f"Error: Duplicate tokenizer label '{counter.name}'. "
+                "Each tokenizer must have a unique name.",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+        seen_labels.add(counter.name)
 
     # --- Process corpus ---
     results = []
